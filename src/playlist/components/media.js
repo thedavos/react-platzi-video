@@ -1,27 +1,32 @@
 import React, { Component } from 'react'
-
-// Componente funcional
-// Componente puro
-// Componente de estado
+import PropTypes from 'prop-types'
+import './media.css'
 
 class Media extends Component {
     render() {
+        const { title, author, image, alt} = this.props
         return (
-            <div>
-                <div>
-                    <img 
-                        src="" 
-                        alt=""
+            <div className="Media">
+                <div className="Media-cover">
+                    <img
+                        className="Media-image"
+                        src={ image } 
+                        alt={ alt }
                         width={260}
                         height={160} 
                     />
-                    <h3>¿Por qué aprender React?</h3>
-                    <p>Leonidas Esteban</p>
+                    <h3 className="Media-title"> { title } </h3>
+                    <p className="Media-author"> { author } </p>
                 </div>
-                <p>Hola Mundo</p>
             </div>
         )
     }
+}
+
+Media.propTypes = {
+    image: PropTypes.string,
+    title: PropTypes.string,
+    author: PropTypes.string,
 }
 
 export default Media

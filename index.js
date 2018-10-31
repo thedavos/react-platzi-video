@@ -9,4 +9,12 @@ const app = document.getElementById('app')
 /* const holaMundo = <h1>Hola Mundo!</h1> */
 
 /* ReactDOM.render(qué renderizo, dónde lo hago)*/
-ReactDOM.render(<Media />, app)
+ReactDOM.render(
+    <Media 
+        title="¿Por qué aprender React?" 
+        author="Leonidas Esteban"
+        image="./images/covers/responsive.jpg"
+        alt="Responsive Design" 
+    />,
+    app
+)
