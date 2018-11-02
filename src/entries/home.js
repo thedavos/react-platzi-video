@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Media from './src/playlist/components/media'
+import Home from '../pages/containers/home'
+/* import Category from './../categories/components/category' */
+import data from './../api.json'
 
 // react sive para crear componentes
 // reactDOM para renderizar y ponerlos en algún lugar
@@ -10,11 +12,6 @@ const app = document.getElementById('app')
 
 /* ReactDOM.render(qué renderizo, dónde lo hago)*/
 ReactDOM.render(
-    <Media 
-        title="¿Por qué aprender React?" 
-        author="Leonidas Esteban"
-        image="./images/covers/responsive.jpg"
-        alt="Responsive Design" 
-    />,
+    <Home data={ data } />,
     app
 )
