@@ -1,17 +1,19 @@
 import React from 'react'
 import Category from './category'
+import Search from '../containers/search'
 import './categories.css'
 
 function Categories(props) {
 
-    const {categories} = props
+    const { categories, handleOpenModal } = props
 
     return (
         <div className="Categories">
+        <Search />
             {
                 categories.map(item => {
                     return (
-                        <Category key={item.id}  { ...item } />
+                        <Category key={item.id}  {...item} handleOpenModal={handleOpenModal}/>
                     )
                 })
             }

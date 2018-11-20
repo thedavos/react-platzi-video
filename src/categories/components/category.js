@@ -5,7 +5,7 @@ import './category.css'
 
 function Category(props) {
 
-    const { description, title, playlist } = props
+    const { description, title, playlist, handleOpenModal } = props
 
     return (
         <div className="Category">
@@ -13,6 +13,7 @@ function Category(props) {
             <h3 className="Category-title"> { title } </h3>
             <Playlist 
                 playlist={ playlist}
+                handleOpenModal={ handleOpenModal }
             />
         </div>
     )

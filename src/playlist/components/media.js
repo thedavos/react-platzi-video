@@ -19,16 +19,11 @@ class Media extends PureComponent {
         ...this.props
     }
 
-    handleClick = (ev) => {
-        this.setState({
-            author: 'Ricardo Celis'
-        })
-    }
-
     render() {
         const { title, author, cover, alt} = this.state
+
         return (
-            <div className="Media" onClick={ this.handleClick }>
+            <div className="Media" onClick={ this.state.handleOpenModal }>
                 <div className="Media-cover">
                     <img
                         className="Media-image"
@@ -45,11 +40,10 @@ class Media extends PureComponent {
     }
 
     /* componentDidMount() {
-        alert("componente montado")
         console.log("componente montado")
-    }
+    } */
 
-    componentWillReceiveProps() {
+    /* componentWillReceiveProps() {
         console.log("cambios")
     }
 
