@@ -6,13 +6,16 @@ import PlayPause from '../components/play-pause';
 import Timer from '../components/timer';
 import Controls from '../components/video-player-controls';
 import formatedTime from '../../utils/formatted'
+import ProgressBar from '../components/progress-bar';
+import { Spinner } from '../components/spinner';
 
 class VideoPlayer extends Component {
 
     state = {
         pause: true,
         duration: 0,
-        currentTime: 0
+        currentTime: 0,
+        loading: false
     }
 
     togglePlay = ev => {
@@ -40,6 +43,30 @@ class VideoPlayer extends Component {
         })
     }
 
+    handleProgressChange = event => {
+        this.video.currentTime = event.target.value
+    }
+
+    handleSeeking = event => {
+        this.setState({
+            loading: true
+        })
+    }
+
+    handleSeeked = event => {
+        this.setState({
+            loading: false
+        })
+    }
+
+    formattedTimeDuration = () => {
+        return formatedTime(this.state.duration)
+    }
+
+    formattedCurrentTime = () => {
+        return formatedTime(this.state.currentTime)
+    }
+
     render() {
         return (
             <VideoPlayerLayout>
@@ -52,16 +79,26 @@ class VideoPlayer extends Component {
                         handleClick={this.togglePlay}
                     />
                     <Timer 
-                        duration={formatedTime(this.state.duration)}
-                        currentTime={formatedTime(this.state.currentTime)}
+                        duration={this.formattedTimeDuration()}
+                        currentTime={this.formattedCurrentTime()}
+                    />
+                    <ProgressBar 
+                        duration={this.state.duration}
+                        value={this.state.currentTime}
+                        handleProgressChange={this.handleProgressChange}
                     />
                 </Controls>
+                <Spinner 
+                    active={this.state.loading}
+                />
                 <Video 
                     autoplay={this.props.autoplay}
                     src='http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4'
                     pause={this.state.pause}
                     handleLoadedMetaData={this.handleLoadedMetaData}
                     handleTimeUpdate={this.handleTimeUpdate}
+                    handleSeeking={this.handleSeeking}
+                    handleSeeked={this.handleSeeked}
                 />
             </VideoPlayerLayout>
         )

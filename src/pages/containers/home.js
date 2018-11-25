@@ -33,9 +33,6 @@ class Home extends Component {
             <HandleError>
                 <HomeLayout>
                     <Related />
-                    <VideoPlayer 
-                        autoplay
-                    />
                     <Categories categories={categories} handleOpenModal={this.handleOpenModal}/>
                     {
                         this.state.modalVisible &&
@@ -43,6 +40,9 @@ class Home extends Component {
                             <Modal
                                 handleClick={this.handleModalClose}
                             >
+                                <VideoPlayer
+                                    autoplay
+                                />
                             </Modal>
                         </ModalContainer>
                     }
