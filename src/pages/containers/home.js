@@ -10,12 +10,13 @@ import VideoPlayer from '../../player/containers/video-player';
 class Home extends Component {
 
     state = {
-        modalVisible: false,
+        modalVisible: false
     }
 
-    handleOpenModal = ev => {
+    handleOpenModal = (media) => {
         this.setState({
-            modalVisible: true
+            modalVisible: true,
+            media
         })
     }
 
@@ -42,6 +43,8 @@ class Home extends Component {
                             >
                                 <VideoPlayer
                                     autoplay
+                                    src={this.state.media.src}
+                                    title={this.state.media.title}
                                 />
                             </Modal>
                         </ModalContainer>
